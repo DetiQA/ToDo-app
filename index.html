@@ -258,7 +258,7 @@
             background: transparent;
             color: var(--text);
         }
-    </style>
+</style>
 </head>
 <body>
 <div class="container">
@@ -302,6 +302,20 @@
     let tasks = [];
     let dragSrcId = null;
 
+    // ⭐⭐⭐ Автоматично попълване на текущата дата и час ⭐⭐⭐
+    window.addEventListener("load", () => {
+        const now = new Date();
+
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+        const hours = String(now.getHours()).padStart(2, "0");
+        const minutes = String(now.getMinutes()).padStart(2, "0");
+
+        const formatted = `${year}-${month}-${day}T${hours}:${minutes}`;
+        deadlineInput.value = formatted;
+    });
+
     // -------- Theme (Dark / Light) --------
     function loadTheme() {
         const theme = localStorage.getItem("theme") || "light";
@@ -319,7 +333,7 @@
         localStorage.setItem("theme", isDark ? "dark" : "light");
         themeToggle.textContent = isDark ? "Light Mode" : "Dark Mode";
     });
-
+    
     // -------- LOCALSTORAGE Function --------
     function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -626,5 +640,6 @@
 </script>
 </body>
 </html>
+
 
 
