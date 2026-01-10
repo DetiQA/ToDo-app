@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>ToDo List</title>
-    <head>
-    <meta charset="UTF-8">
     <title>To-Do Task</title>
 
     <!-- PWA manifest -->
@@ -12,8 +9,6 @@
 
     <!-- Цвят на адрес бара на мобилни браузъри -->
     <meta name="theme-color" content="#28A745">
-
-    <!-- тук могат да си следват другите ти meta, link, style и т.н. --
 
     <style>
         :root {
@@ -91,6 +86,7 @@
             grid-template-rows: auto auto;
             gap: 8px;
         }
+
         #taskInput, #deadlineInput, #categorySelect {
             padding: 8px;
             border-radius: 6px;
@@ -208,7 +204,8 @@
         }
 
         .deadline-info.completed-deadline {
-            color: #555 !important; /* сиво */ font-weight: normal;
+            color: #555 !important;
+            font-weight: normal;
         }
 
         .countdown {
@@ -353,6 +350,7 @@
 <audio id="alarmSound">
     <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
 </audio>
+
 <script>
 const taskInput = document.getElementById("taskInput");
 const categorySelect = document.getElementById("categorySelect");
@@ -622,17 +620,17 @@ function toggleComplete(id, spanEl, btn) {
 
     const li = taskList.querySelector(`li[data-id="${id}"]`);
     const alarmIcon = li.querySelector(".alarm-icon");
-    const deadlineInfo = li.querySelector(".deadline-info"); // ← ДОБАВЕНО
+    const deadlineInfo = li.querySelector(".deadline-info");
 
     if (task.completed) {
         spanEl.classList.add("completed");
-        deadlineInfo.classList.add("completed-deadline"); // ← ДОБАВЕНО
+        deadlineInfo.classList.add("completed-deadline");
         btn.textContent = "Uncheck";
         alarmIcon.style.display = "none";
         task.alarmPlayed = true;
     } else {
         spanEl.classList.remove("completed");
-        deadlineInfo.classList.remove("completed-deadline"); // ← ДОБАВЕНО
+        deadlineInfo.classList.remove("completed-deadline");
         btn.textContent = "Complete";
         alarmIcon.style.display = "inline-block";
         task.alarmPlayed = false;
@@ -821,34 +819,22 @@ taskList.addEventListener("drop", () => {
 // -------- Init --------
 loadTheme();
 loadTasks();
-    <script src="script.js"></script>
 
-<script>
-    // Твоят JavaScript код трябва да е тук
-    // loadTheme();
-    // loadTasks();
-    // целият ти JS отгоре
-
-    // Регистрация на Service Worker
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("service-worker.js")
-            .then(() => console.log("Service Worker registered"))
-            .catch(err => console.log("SW registration failed:", err));
-    }
+// -------- Service Worker регистрация --------
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch(err => console.log("SW registration failed:", err));
+}
 </script>
 
-</body>
-</html>
-
-    
-    }
-</script>        
 </body>
 </html>
 
 
 
        
+
 
 
 
