@@ -824,15 +824,23 @@ loadTasks();
     <script src="script.js"></script>
 
 <script>
-    // Твоите функции, които трябва да се изпълнят при зареждане
-    loadTheme();
-    loadTasks();
+    // Твоят JavaScript код трябва да е тук
+    // loadTheme();
+    // loadTasks();
+    // целият ти JS отгоре
 
     // Регистрация на Service Worker
     if ("serviceWorker" in navigator) {
         navigator.serviceWorker.register("service-worker.js")
             .then(() => console.log("Service Worker registered"))
             .catch(err => console.log("SW registration failed:", err));
+    }
+</script>
+
+</body>
+</html>
+
+    
     }
 </script>        
 </body>
@@ -841,6 +849,7 @@ loadTasks();
 
 
        
+
 
 
 
