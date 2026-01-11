@@ -358,7 +358,71 @@ input.edit-input {
     background: transparent;
     color: var(--text);
     font-size: 12px;
-   }
+}
+}
+
+/* 🚫 Пълна забрана на хоризонтален скрол */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+/* 🛡️ Всички елементи да се свиват, вместо да разширяват страницата */
+* {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+}
+
+/* 🧩 Принуждаваме flex елементите да се пречупват, вместо да избутват ширината */
+.top-row,
+.middle-row,
+.bottom-row {
+    flex-wrap: wrap !important;
+}
+
+/* 📝 Пренасяне на текст, за да не раздува ширината */
+.task-text span,
+.category-badge,
+.countdown {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    white-space: normal !important;
+}
+
+/* 📱 MOBILE FIX — премахваме flex от body, за да не „плува“ листът */
+@media (max-width: 600px) {
+
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
+    body {
+        display: block !important;   /* ← най-важното */
+        padding-top: 20px;
+        background: var(--bg);
+    }
+
+    .container {
+        width: 94%;
+        max-width: 420px;
+        margin: 0 auto;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        box-sizing: border-box;
+    }
+
+    body, input, button, select, li {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
 }
 
 </style>
@@ -885,6 +949,7 @@ if ("serviceWorker" in navigator) {
 
 
        
+
 
 
 
