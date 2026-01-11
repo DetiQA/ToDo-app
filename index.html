@@ -14,343 +14,300 @@
 
     <style>
        :root {
-    --bg: #f4f4f4;
-    --card-eng: #ffffff;
-    --text: #222;
-    --accent: #28a745;
-    --accent-dark: #218838;
-    --danger: #dc3545;
-    --primary: #007bff;
-    --muted: #666;
-    --border: #ddd;
-}
+            --bg: #f4f4f4;
+            --card-eng: #ffffff;
+            --text: #222;
+            --accent: #28a745;
+            --accent-dark: #218838;
+            --danger: #dc3545;
+            --primary: #007bff;
+            --muted: #666;
+            --border: #ddd;
+        }
 
-body.dark {
-    --bg: #121212;
-    --card-eng: #1e1e1e;
-    --text: #f5f5f5;
-    --accent: #4caf50;
-    --accent-dark: #3c8c40;
-    --danger: #ff5252;
-    --primary: #66b0ff;
-    --muted: #aaa;
-    --border: #333;
-}
+        body.dark {
+            --bg: #121212;
+            --card-eng: #1e1e1e;
+            --text: #f5f5f5;
+            --accent: #4caf50;
+            --accent-dark: #3c8c40;
+            --danger: #ff5252;
+            --primary: #66b0ff;
+            --muted: #aaa;
+            --border: #333;
+        }
 
-/* ===== DESKTOP DEFAULT (НЕ ПИПАМЕ) ===== */
-body {
-    font-family: Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    margin: 0;
-    padding: 30px 10px;
-    display: flex;
-    justify-content: center;
-    transition: background 0.3s ease, color 0.3s ease;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            padding: 30px 10px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
 
-.container {
-    background: var(--card-eng);
-    padding: 20px;
-    width: 100%;
-    max-width: 430px; /* ← лист в центъра */
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-    box-sizing: border-box;
-}
+        .container {
+            background: var(--card-eng);
+            padding: 20px;
+            width: 100%; max-width: 430px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
 
-/* ===== MOBILE FIX — статичен, четим, центриран лист ===== */
-@media (max-width: 600px) {
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
 
-    html, body {
-        margin: 0;
-        padding: 0;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
+        h2 {
+            margin: 0;
+        }
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        padding-top: 20px;
-        background: var(--bg);
-    }
+        #themeToggle {
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 12px;
+        }
 
-    .container {
-        width: 94%;          /* малко бяло поле отстрани */
-        max-width: 420px;    /* достатъчно широк, за да се чете */
-        margin: 0 auto;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        box-sizing: border-box;
-    }
+        #themeToggle:hover {
+            background: rgba(0,0,0,0.04);
+        }
 
-    /* по-голям и четим текст */
-    body, input, button, select, li {
-        font-size: 18px;
-    }
+        .inputs {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 8px;
+        }
 
-    h2 {
-        font-size: 22px;
-    }
-}
+        #taskInput, #deadlineInput, #categorySelect {
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text);
+        }
 
-/* ===== Останалите стилове (не са променяни) ===== */
+        #taskInput::placeholder {
+            color: var(--muted);
+        }
 
-.header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
+        #addBtn {
+            grid-column: span 2;
+            padding: 9px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s ease, transform 0.08s ease;
+        }
 
-h2 {
-    margin: 0;
-}
+        #addBtn:hover {
+            background: var(--accent-dark);
+        }
 
-#themeToggle {
-    padding: 6px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-    cursor: pointer;
-    font-size: 12px;
-}
+        #addBtn:active {
+            transform: scale(0.98);
+        }
 
-#themeToggle:hover {
-    background: rgba(0,0,0,0.04);
-}
+        ul {
+            margin-top: 20px;
+            padding: 0;
+        }
 
-.inputs {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 8px;
-}
+        li {
+            list-style: none;
+            background: rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            cursor: grab;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, opacity 0.2s ease;
+        }
 
-#taskInput, #deadlineInput, #categorySelect {
-    padding: 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text);
-}
+        li.dragging {
+            opacity: 0.6;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
 
-#taskInput::placeholder {
-    color: var(--muted);
-}
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
 
-#addBtn {
-    grid-column: span 2;
-    padding: 9px;
-    background: var(--accent);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.2s ease, transform 0.08s ease;
-}
+        .task-text {
+            flex: 1;
+        }
 
-#addBtn:hover {
-    background: var(--accent-dark);
-}
+        .task-text span {
+            word-break: break-word;
+        }
 
-#addBtn:active {
-    transform: scale(0.98);
-}
+        .task-text span.completed {
+            text-decoration: line-through;
+            color: #555;
+        }
 
-ul {
-    margin-top: 20px;
-    padding: 0;
-}
+        .category-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            border: 1px solid var(--border);
+            white-space: nowrap;
+        }
 
-li {
-    list-style: none;
-    background: rgba(0,0,0,0.02);
-    border: 1px solid var(--border);
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    cursor: grab;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease, opacity 0.2s ease;
-}
+        .category-Work {
+            border-color: #ff9800;
+            color: #ff9800;
+        }
 
-li.dragging {
-    opacity: 0.6;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
+        .category-School {
+            border-color: #3f51b5;
+            color: #3f51b5;
+        }
 
-.top-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-}
+        .category-Personal {
+            border-color: #9c27b0;
+            color: #9c27b0;
+        }
 
-.task-text {
-    flex: 1;
-}
+        .middle-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--muted);
+            align-items: center;
+            gap: 6px;
+        }
 
-.task-text span {
-    word-break: break-word;
-}
+        .deadline-info {
+            color: red;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
 
-.task-text span.completed {
-    text-decoration: line-through;
-    color: #555;
-}
+        .deadline-info.completed-deadline {
+            color: #555 !important;
+            font-weight: normal;
+        }
 
-.category-badge {
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 11px;
-    border: 1px solid var(--border);
-    white-space: nowrap;
-}
+        .countdown {
+            text-align: right;
+            font-size: 12px;
+            color: var(--muted);
+            min-width: 80px;
+        }
 
-.category-Work {
-    border-color: #ff9800;
-    color: #ff9800;
-}
+        .countdown.due-soon {
+            color: #ff9800;
+        }
 
-.category-School {
-    border-color: #3f51b5;
-    color: #3f51b5;
-}
+        .countdown.overdue {
+            color: #e53935;
+        }
 
-.category-Personal {
-    border-color: #9c27b0;
-    color: #9c27b0;
-}
+        .alarm-icon {
+            font-size: 16px;
+            margin-left: 2px;
+            color: red;
+            display: inline-block;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.middle-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    align-items: center;
-    gap: 6px;
-}
+        .alarm-icon.alarm-active {
+            opacity: 1;
+            animation: shake 0.6s infinite;
+        }
 
-.deadline-info {
-    color: red;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
+        .alarm-icon.completed-alarm {
+            color: #555;
+            opacity: 0.5;
+            animation: none;
+        }
 
-.deadline-info.completed-deadline {
-    color: #555 !important;
-    font-weight: normal;
-}
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-10deg); }
+            100% { transform: rotate(0deg); }
+        }
 
-.countdown {
-    text-align: right;
-    font-size: 12px;
-    color: var(--muted);
-    min-width: 80px;
-}
+        .bottom-row {
+            display: flex;
+            justify-content: flex-end;
+            gap: 6px;
+        }
 
-.countdown.due-soon {
-    color: #ff9800;
-}
+        .btn {
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: none;
+            font-size: 11px;
+            cursor: pointer;
+        }
 
-.countdown.overdue {
-    color: #e53935;
-}
+        .btn-complete {
+            background: #17a2b8;
+            color: white;
+        }
 
-.alarm-icon {
-    font-size: 16px;
-    margin-left: 2px;
-    color: red;
-    display: inline-block;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .btn-edit {
+            background: #ffc107;
+            color: #222;
+        }
 
-.alarm-icon.alarm-active {
-    opacity: 1;
-    animation: shake 0.6s infinite;
-}
+        .btn-delete {
+            background: var(--danger);
+            color: white;
+        }
 
-.alarm-icon.completed-alarm {
-    color: #555;
-    opacity: 0.5;
-    animation: none;
-}
+        .btn:hover {
+            filter: brightness(0.95);
+        }
 
-@keyframes shake {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(10deg); }
-    50% { transform: rotate(0deg); }
-    75% { transform: rotate(-10deg); }
-    100% { transform: rotate(0deg); }
-}
+        .stats {
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+        }
 
-.bottom-row {
-    display: flex;
-    justify-content: flex-end;
-    gap: 6px;
-}
+        .fade-in {
+            opacity: 0;
+            transform: translateY(6px);
+            animation: fadeIn 0.2s forwards;
+        }
 
-.btn {
-    padding: 4px 8px;
-    border-radius: 4px;
-    border: none;
-    font-size: 11px;
-    cursor: pointer;
-}
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-.btn-complete {
-    background: #17a2b8;
-    color: white;
-}
-
-.btn-edit {
-    background: #ffc107;
-    color: #222;
-}
-
-.btn-delete {
-    background: var(--danger);
-    color: white;
-}
-
-.btn:hover {
-    filter: brightness(0.95);
-}
-
-.stats {
-    margin-top: 15px;
-    font-size: 13px;
-    color: var(--muted);
-    display: flex;
-    justify-content: space-between;
-}
-
-.fade-in {
-    opacity: 0;
-    transform: translateY(6px);
-    animation: fadeIn 0.2s forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-input.edit-input {
+       input.edit-input {
     width: 100%;
     border-radius: 4px;
     border: 1px solid var(--border);
@@ -359,69 +316,18 @@ input.edit-input {
     color: var(--text);
     font-size: 12px;
 }
-}
 
-/* 🚫 Пълна забрана на хоризонтален скрол */
-html, body {
-    overflow-x: hidden !important;
-    max-width: 100% !important;
-}
-
-/* 🛡️ Всички елементи да се свиват, вместо да разширяват страницата */
-* {
-    box-sizing: border-box !important;
-    max-width: 100% !important;
-}
-
-/* 🧩 Принуждаваме flex елементите да се пречупват, вместо да избутват ширината */
-.top-row,
-.middle-row,
-.bottom-row {
-    flex-wrap: wrap !important;
-}
-
-/* 📝 Пренасяне на текст, за да не раздува ширината */
-.task-text span,
-.category-badge,
-.countdown {
-    word-wrap: break-word !important;
-    overflow-wrap: break-word !important;
-    white-space: normal !important;
-}
-
-/* 📱 MOBILE FIX — премахваме flex от body, за да не „плува“ листът */
+/* MOBILE FIX */
 @media (max-width: 600px) {
-
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden !important;
-    }
-
     body {
-        display: block !important;   /* ← най-важното */
-        padding-top: 20px;
-        background: var(--bg);
+        padding: 0 !important;
+        display: block !important;
     }
 
     .container {
-        width: 94%;
-        max-width: 420px;
-        margin: 0 auto;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        box-sizing: border-box;
-    }
-
-    body, input, button, select, li {
-        font-size: 18px;
-    }
-
-    h2 {
-        font-size: 22px;
+        max-width: 100% !important;
+        width: 100% !important;
+        border-radius: 0 !important;
     }
 }
 
@@ -949,6 +855,7 @@ if ("serviceWorker" in navigator) {
 
 
        
+
 
 
 
