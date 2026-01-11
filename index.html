@@ -37,7 +37,7 @@ body.dark {
     --border: #333;
 }
 
-/* ===== DESKTOP DEFAULT (центриран лист) ===== */
+/* ===== DESKTOP DEFAULT (НЕ ПИПАМЕ) ===== */
 body {
     font-family: Arial, sans-serif;
     background: var(--bg);
@@ -59,27 +59,29 @@ body {
     box-sizing: border-box;
 }
 
-/* ===== MOBILE / PWA FIX ===== */
+/* ===== MOBILE FIX — статичен, четим, центриран лист ===== */
 @media (max-width: 600px) {
 
     body {
-        padding: 0;
         margin: 0;
-        display: block;
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+        background: var(--bg);
         overflow-x: hidden;
     }
 
     .container {
-        width: 100%;
-        max-width: 100%;
-        border-radius: 0;
+        width: 92%;              /* малко бяло поле отстрани */
+        max-width: 420px;        /* достатъчно широк, за да се чете */
+        margin: 0 auto;
+        border-radius: 12px;
         padding: 20px;
-        margin: 0;
-        box-shadow: none;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
         box-sizing: border-box;
     }
 
-    /* Увеличаваме шрифта за да не е дребен */
+    /* по-голям и четим текст */
     body, input, button, select, li {
         font-size: 18px;
     }
@@ -350,6 +352,7 @@ input.edit-input {
     background: transparent;
     color: var(--text);
     font-size: 12px;
+
    }
 }
 
@@ -877,6 +880,7 @@ if ("serviceWorker" in navigator) {
 
 
        
+
 
 
 
